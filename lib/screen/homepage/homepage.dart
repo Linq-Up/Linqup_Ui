@@ -12,8 +12,8 @@ import 'package:provider/provider.dart';
 
 import '../../widget/button/custom_button.dart';
 import '../../widget/gap/gap.dart';
-import '../../widget/make_search_friends/make_and_search_button_wrapper.dart';
 import '../../widget/make_search_friends/make_friends_page_content.dart';
+import '../../widget/make_search_friends/switch_screen.dart';
 import '../../widget/status_wrapper/status_wrapper.dart';
 import '../search_partner/search_partner_page.dart';
 
@@ -237,9 +237,11 @@ class _MakeFriends extends State<Homepage> {
           children: [
             toggleState.isActive ? const StatusWrapper() : const SizedBox(),
             const Gap(height: 20),
-            MakeFriendsAndSearchPartnerButtonWrapper(
-              makeFriendsHandler: () => makeFriendsHandler(toggleState),
-              searchPartnerHandler: () => searchPartnerHandler(toggleState),
+            SwitchScreen(
+              screenOneTitle: 'Make Friends',
+              screenTwoTitle: 'Search Partners',
+              screenOne: () => makeFriendsHandler(toggleState),
+              screenTwo: () => searchPartnerHandler(toggleState),
             ),
             const Gap(height: 10),
             Expanded(

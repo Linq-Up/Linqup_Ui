@@ -29,39 +29,42 @@ class _PostpopUpMenuState extends State<PostpopUpMenu> {
   Widget build(context) {
     return Container(
       decoration: BoxDecoration(
-        border: widget.borderBox ?? Border.all(
-          color: Theme.of(context).colorScheme.outline,
-          width: 0,
-        ),
+        border: widget.borderBox ??
+            Border.all(
+              color: Colors.transparent,
+              width: 1,
+            ),
         borderRadius: BorderRadius.circular(10),
       ),
       padding: EdgeInsets.symmetric(
           horizontal: widget.horizontalPadding,
           vertical: widget.verticalPadding),
-      child: DropdownButton<String>(
-        dropdownColor: Theme.of(context).colorScheme.onPrimary,
-        borderRadius: BorderRadius.circular(20),
-        menuWidth: 300,
-        value: widget.selectedItem,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
-        icon: const Icon(
-          Icons.keyboard_arrow_down_outlined,
-          color: Colors.grey,
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          dropdownColor: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: BorderRadius.circular(20),
+          menuWidth: MediaQuery.of(context).size.width * 0.3,
+          value: widget.selectedItem,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+          icon: Icon(
+            Icons.keyboard_arrow_down_outlined,
+            color: Theme.of(context).colorScheme.outline,
+          ),
+          elevation: 16,
+          onChanged: (String? newValue) {
+            setState(() {
+              widget.selectedItem = newValue!;
+            });
+          },
+          items: widget.buttonList.map<DropdownMenuItem<String>>((String item) {
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Name(text: item),
+            );
+          }).toList(),
         ),
-        elevation: 16,
-        onChanged: (String? newValue) {
-          setState(() {
-            widget.selectedItem = newValue!;
-          });
-        },
-        items: widget.buttonList.map<DropdownMenuItem<String>>((String item) {
-          return DropdownMenuItem<String>(
-            value: item,
-            child: Name(text: item),
-          );
-        }).toList(),
       ),
     );
   }

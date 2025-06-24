@@ -25,98 +25,86 @@ class _PostScreenState extends State<PostScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         actions: [
-          PopupMenuButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            color: Theme.of(context).colorScheme.onPrimary,
-            onSelected: (value) {
-              if (value == 'publish') {}
-              if (value == 'drafts') {}
-              if (value == 'posts') {}
+          CustomButton(
+            onClick: () {
+              showDialog(
+                context: context,
+                builder: (context) => Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: SimpleDialog(
+                    backgroundColor: Colors.transparent,
+                    alignment: Alignment.topRight,
+                    insetPadding: EdgeInsets.zero,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 25,
+                        ),
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.95),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: const [
+                            BoxShadow(blurRadius: 8, color: Colors.black26)
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Icon(Icons.close),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: const Name(text: 'Publish Post'),
+                              ),
+                            ),
+                            const Divider(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: const Name(text: 'Save as Drafts'),
+                              ),
+                            ),
+                            const Divider(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 10.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: const Name(text: 'My Posts'),
+                              ),
+                            ),
+                            const Divider(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: CustomButton(
-                customPaddingHorizontal: 10.0,
-                customPaddingVertical: 10.0,
-                customBorderRadius: 100,
-                imageIcon: 'assets/png/switch.png',
-                bgHeight: 20,
-                bgWidth: 20,
-                borderColor: Theme.of(context).colorScheme.inversePrimary,
-              ),
-            ),
-            itemBuilder: (ctx) => [
-              const PopupMenuItem(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Icon(Icons.close),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'publish',
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.4),
-                      ),
-                    ),
-                  ),
-                  width: 200,
-                  child: const Name(text: 'Publish Post'),
-                ),
-              ),
-              PopupMenuItem(
-                value: 'drafts',
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.4),
-                      ),
-                    ),
-                  ),
-                  width: 200,
-                  child: const Name(text: 'Save as Drafts'),
-                ),
-              ),
-              PopupMenuItem(
-                value: 'posts',
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withOpacity(0.4),
-                      ),
-                    ),
-                  ),
-                  width: 200,
-                  child: const Name(text: 'My Posts'),
-                ),
-              ),
-            ],
+            customPaddingHorizontal: 10.0,
+            customPaddingVertical: 10.0,
+            customBorderRadius: 100,
+            imageIcon: 'assets/png/switch.png',
+            iconColor: Theme.of(context).colorScheme.primary,
+            borderColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ],
       ),

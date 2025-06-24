@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linqup_mobile_application/screen/forgotten_password/forgotten_password_screen.dart';
 import 'package:linqup_mobile_application/widget/button/custom_button.dart';
 import 'package:linqup_mobile_application/widget/custom_input/custom_input_wrapper.dart';
 import 'package:linqup_mobile_application/widget/gap/gap.dart';
@@ -53,13 +54,14 @@ class Login extends StatelessWidget {
               ),
               Gap(height: MediaQuery.of(context).size.height * 0.05),
               const CustomInputWrapper(
-                  label: 'Email',
-                  iconData: Icons.email,
-                  hintText: 'Type something here',
-                  topLeftRadius: Radius.circular(10),
-                  topRightRadius: Radius.circular(10),
-                  bottomLeftRadius: Radius.circular(10),
-                  bottomRightRadius: Radius.circular(10)),
+                label: 'Email',
+                iconData: Icons.email,
+                hintText: 'Type something here',
+                topLeftRadius: Radius.circular(10),
+                topRightRadius: Radius.circular(10),
+                bottomLeftRadius: Radius.circular(10),
+                bottomRightRadius: Radius.circular(10),
+              ),
               Gap(
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
@@ -78,7 +80,13 @@ class Login extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: CustomButton(
-                  onClick: () {},
+                  onClick: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const ForgottenPasswordScreen(),
+                      ),
+                    );
+                  },
                   title: 'Forgot Password?',
                   titleStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,

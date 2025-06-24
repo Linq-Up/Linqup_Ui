@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:linqup_mobile_application/providers/state_manager/make_and_search_state.dart';
-import 'package:linqup_mobile_application/widget/make_search_friends/toggle_page_button.dart';
+import 'package:linqup_mobile_application/widget/make_search_friends/switch_screen_button.dart';
 import 'package:provider/provider.dart';
 
-class MakeFriendsAndSearchPartnerButtonWrapper extends StatelessWidget {
-  const MakeFriendsAndSearchPartnerButtonWrapper(
-      {required this.makeFriendsHandler,
-      required this.searchPartnerHandler,
+class SwitchScreen extends StatelessWidget {
+  const SwitchScreen(
+      {required this.screenOne,
+      required this.screenOneTitle,
+      required this.screenTwoTitle,
+      required this.screenTwo,
       super.key});
 
-  final void Function() makeFriendsHandler;
-  final void Function() searchPartnerHandler;
-
+  final void Function() screenOne;
+  final String screenOneTitle;
+  final void Function() screenTwo;
+  final String screenTwoTitle;
   @override
   Widget build(context) {
     final toggleState = Provider.of<MakeAndSearchStateNav>(context);
@@ -31,19 +34,19 @@ class MakeFriendsAndSearchPartnerButtonWrapper extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TogglePageButton(
-              title: 'Make Friends',
+            SwitchScreenButton(
+              title: screenOneTitle,
               bgColor: toggleState.isActive
                   ? Theme.of(context).colorScheme.onPrimary
                   : Colors.transparent,
-              toggleHandler: makeFriendsHandler,
+              toggleHandler: screenOne,
             ),
-            TogglePageButton(
-              title: 'Search Partners',
+            SwitchScreenButton(
+              title: screenTwoTitle,
               bgColor: !toggleState.isActive
                   ? Theme.of(context).colorScheme.onPrimary
                   : Colors.transparent,
-              toggleHandler: searchPartnerHandler,
+              toggleHandler: screenTwo,
             ),
           ],
         ),

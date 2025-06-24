@@ -9,4 +9,9 @@ class MakeAndSearchStateNav with ChangeNotifier {
     _isFirstButtonActive = isFirst;
     notifyListeners();
   }
+
+  set reset(bool value) {
+    _isFirstButtonActive = value;
+    notifyListeners();
+  }
 }
