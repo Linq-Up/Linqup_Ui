@@ -3,7 +3,7 @@ import 'package:linqup_mobile_application/widget/button/custom_button.dart';
 import 'package:linqup_mobile_application/widget/custom_input/custom_input_wrapper.dart';
 import 'package:linqup_mobile_application/widget/gap/gap.dart';
 import 'package:linqup_mobile_application/widget/text/name.dart';
-import 'package:linqup_mobile_application/widget/wallet/earning%20_item.dart';
+import 'package:linqup_mobile_application/widget/wallet/earning_item.dart';
 import 'package:linqup_mobile_application/widget/wallet/payment_card_item.dart';
 import 'package:linqup_mobile_application/widget/wallet/wallet_balance.dart';
 import 'package:linqup_mobile_application/widget/wallet/wallet_item_wrapper.dart';

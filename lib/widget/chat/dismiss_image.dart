@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class DismissImage extends StatefulWidget {
-  DismissImage({required this.image, super.key});
+  const DismissImage({required this.image, super.key});
 
-  File? image;
+  final File? image;
 
   @override
   State<StatefulWidget> createState() {
@@ -14,15 +14,23 @@ class DismissImage extends StatefulWidget {
 }
 
 class _DismissImageState extends State<DismissImage> {
+  File? _localImage;
+
+  @override
+  void initState() {
+    super.initState();
+    _localImage = widget.image;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: widget.image != null
+          child: _localImage != null
               ? Image.file(
-                  widget.image!,
+                  _localImage!,
                   width: 150,
                   height: 150,
                   fit: BoxFit.cover,
@@ -37,7 +45,7 @@ class _DismissImageState extends State<DismissImage> {
             child: IconButton(
               onPressed: () {
                 setState(() {
-                  widget.image = null;
+                  _localImage = null;
                 });
               },
               icon: const Icon(Icons.close),

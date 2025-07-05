@@ -1,7 +1,7 @@
 enum Interest {
   men,
   women,
-  serious_relationship,
+  seriousRelationship,
   friendship,
 }
 
@@ -13,7 +13,7 @@ enum InterestIn {
 enum Category {
   travel('Travel'),
   culture('Culture'),
-  casual_dating('Casual Dating');
+  casualDating('Casual Dating');
 
   const Category(this.title);
   final String title;

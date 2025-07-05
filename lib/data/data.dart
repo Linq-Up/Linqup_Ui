@@ -153,7 +153,7 @@ List<Discover> posts = [
     content:
         "Lorem ipsum dolor sit amet consectetur. Odio sapien ipsum posuere arcu quis sit tincidunt dictum. Tortor et nunc felis tincidunt. Venenatis feugiat vitae rhoncus amet aliquet. Quis mi fames odio felis. Tempus pretium non massa vitae. Lorem ipsum dolor sit amet consectetur. Odio sapien ipsum posuere arcu quis sit tincidunt dictum. Tortor et nunc felis tincidunt. Venenatis feugiat vitae rhoncus amet aliquet. Quis mi fames odio felis. Tempus pretium non massa vitae. Lorem ipsum dolor sit amet consectetur. Odio sapien ipsum posuere arcu quis sit tincidunt dictum. Tortor et nunc felis tincidunt. Venenatis feugiat vitae rhoncus amet aliquet. Quis mi fames odio felis. Tempus pretium non massa vitae.",
     imageUrl: 'assets/jpg/couple.jpg',
-    category: Category.casual_dating,
+    category: Category.casualDating,
     categoryIcon: CategoryIcon.casualDating,
     userProfile: user2,
   ),

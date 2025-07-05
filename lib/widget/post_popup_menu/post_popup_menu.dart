@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../text/name.dart';
 
 class PostpopUpMenu extends StatefulWidget {
-  PostpopUpMenu({
+  const PostpopUpMenu({
     required this.selectedItem,
     required this.buttonList,
     required this.verticalPadding,
@@ -12,7 +12,7 @@ class PostpopUpMenu extends StatefulWidget {
     super.key,
   });
 
-  String selectedItem;
+  final String selectedItem;
   final List<String> buttonList;
   final double horizontalPadding;
   final double verticalPadding;
@@ -25,6 +25,14 @@ class PostpopUpMenu extends StatefulWidget {
 }
 
 class _PostpopUpMenuState extends State<PostpopUpMenu> {
+  String? _localSelectedItem;
+
+  @override
+  void initState() {
+    super.initState();
+    _localSelectedItem = widget.selectedItem;
+  }
+
   @override
   Widget build(context) {
     return Container(
@@ -44,7 +52,7 @@ class _PostpopUpMenuState extends State<PostpopUpMenu> {
           dropdownColor: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.circular(20),
           menuWidth: MediaQuery.of(context).size.width * 0.3,
-          value: widget.selectedItem,
+          value: _localSelectedItem!,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -55,7 +63,7 @@ class _PostpopUpMenuState extends State<PostpopUpMenu> {
           elevation: 16,
           onChanged: (String? newValue) {
             setState(() {
-              widget.selectedItem = newValue!;
+              _localSelectedItem = newValue!;
             });
           },
           items: widget.buttonList.map<DropdownMenuItem<String>>((String item) {
